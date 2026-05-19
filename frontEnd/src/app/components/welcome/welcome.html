@@ -1,0 +1,65 @@
+<section id="welcome" class="screen">
+  <div class="container">
+    <div class="welcome-hero">
+      <div class="row align-items-center g-5">
+
+        <!-- TEXT -->
+        <div class="col-lg-6 text-center text-lg-end">
+
+          <span class="chip-label">
+            <i class="bi bi-heart-fill ms-1"></i> مرحبًا بكِ
+          </span>
+
+          <h1 class="screen-title display-5 mb-3">
+            رحلة لا تُرى… لكنها تُعاش بكل القلب
+          </h1>
+
+          <p class="screen-sub fs-5 lh-lg mb-4">
+            هذا المكان صُمّم ليحتويكِ، لا ليحكم عليكِ.<br/>
+            خلال رحلتكِ مع طفل الأنابيب، قد تتغير مشاعركِ كل يوم… وهذا طبيعي.<br/>
+            هنا ستجدين دعمًا هادئًا، معلومات موثوقة، ومساحة لكِ أنتِ فقط يا بطلة.
+          </p>
+
+          <div class="d-flex gap-2 justify-content-center justify-content-lg-end flex-wrap">
+
+            <!-- Angular action -->
+            <button
+              class="btn btn-soft btn-lg"
+              (click)="startJourney()"
+            >
+              ابدئي رحلتك
+              <i class="bi bi-arrow-left ms-1"></i>
+            </button>
+
+            <!-- simple anchor ok -->
+            <a href="#education" class="btn btn-ghost btn-lg">
+              تعرّفي أكثر
+            </a>
+
+          </div>
+        </div>
+
+        <!-- ILLUSTRATION -->
+        <div class="col-lg-6">
+          <div class="position-relative">
+
+            <div class="welcome-illustration"></div>
+
+            <span class="floating-dot"
+                  style="top:10%; inset-inline-start:18%;"></span>
+
+            <span class="floating-dot"
+                  style="bottom:14%; inset-inline-end:14%; background:var(--lavender-200); animation-delay:.8s;">
+            </span>
+
+            <span class="floating-dot"
+                  style="top:50%; inset-inline-start:6%; animation-delay:1.4s;">
+            </span>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>

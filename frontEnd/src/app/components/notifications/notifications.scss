@@ -1,0 +1,140 @@
+.notifications-wrapper {
+  max-width: 680px;
+  margin: 40px auto;
+  padding: 0 16px;
+  direction: rtl;
+  font-family: 'Segoe UI', 'Tajawal', sans-serif;
+}
+
+// ── Header ──────────────────────────────────────────
+.notif-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+
+  h3 {
+    margin: 0;
+    font-size: 22px;
+    font-weight: 700;
+    color: #2d2d2d;
+  }
+
+  .badge {
+    background: linear-gradient(135deg, #e91e8c, #c2185b);
+    color: white;
+    border-radius: 20px;
+    padding: 4px 12px;
+    font-size: 13px;
+    font-weight: 600;
+    box-shadow: 0 2px 8px rgba(233, 30, 140, 0.35);
+  }
+}
+
+// ── Empty ────────────────────────────────────────────
+.empty {
+  text-align: center;
+  padding: 60px 20px;
+  color: #bbb;
+
+  p {
+    font-size: 16px;
+    margin: 0;
+  }
+}
+
+// ── Notif Item ───────────────────────────────────────
+.notif-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 16px 20px;
+  margin-bottom: 10px;
+  border-radius: 14px;
+  background: #fff;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  position: relative;
+  border-right: 4px solid transparent;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  }
+
+  &.unread {
+    background: #fff5fb;
+    border-right-color: #e91e8c;
+  }
+
+  // ── Icône ─────────────────────────────────────────
+  .notif-icon {
+    font-size: 26px;
+    flex-shrink: 0;
+    margin-top: 2px;
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    background: #fdf0f8;
+  }
+
+  // ── Contenu ───────────────────────────────────────
+  .notif-content {
+    flex: 1;
+    min-width: 0;
+
+    .notif-title {
+      margin: 0 0 5px;
+      font-size: 15px;
+      font-weight: 700;
+      color: #1a1a1a;
+    }
+
+    .notif-message {
+      margin: 0 0 8px;
+      font-size: 13px;
+      color: #666;
+      line-height: 1.6;
+    }
+
+    .notif-date {
+      font-size: 11px;
+      color: #bbb;
+    }
+  }
+
+  // ── Point non lu ──────────────────────────────────
+  .unread-dot {
+    width: 10px;
+    height: 10px;
+    background: #e91e8c;
+    border-radius: 50%;
+    flex-shrink: 0;
+    margin-top: 6px;
+    box-shadow: 0 0 6px rgba(233, 30, 140, 0.5);
+  }
+}
+
+// ── Couleurs par type ─────────────────────────────────
+.notif-item:has(.notif-icon:contains('🌸')) {
+  border-right-color: #f48fb1;
+}
+.notif-item:has(.notif-icon:contains('📅')) {
+  border-right-color: #90caf9;
+}
+.notif-item:has(.notif-icon:contains('💊')) {
+  border-right-color: #a5d6a7;
+}
+
+// ── Scrollbar ─────────────────────────────────────────
+::-webkit-scrollbar {
+  width: 5px;
+}
+::-webkit-scrollbar-thumb {
+  background: #f0c4de;
+  border-radius: 4px;
+}

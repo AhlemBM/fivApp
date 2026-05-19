@@ -1,0 +1,142 @@
+<section id="cycle" class="screen">
+  <div class="container max-820">
+
+    <!-- HEADER -->
+    <div class="text-center mb-4">
+      <span class="chip-label">
+        <i class="bi bi-calendar-week ms-1"></i> دورتكِ
+      </span>
+      <h2 class="screen-title">بداية دورتكِ، بداية رحلتكِ</h2>
+      <p class="screen-sub">
+        تتبّعي دورتكِ، أدويتكِ ومواعيدكِ بسهولة.
+      </p>
+    </div>
+
+    <div class="soft-card">
+      <form [formGroup]="form" class="row g-3">
+
+        <!-- DATE -->
+        <div class="col-md-6">
+          <label class="form-label-soft">تاريخ بداية الدورة</label>
+          <div class="input-icon">
+            <i class="bi bi-calendar-event"></i>
+            <input type="date" class="form-control" formControlName="startDate" />
+          </div>
+        </div>
+
+        <!-- LENGTH -->
+        <div class="col-md-6">
+          <label class="form-label-soft">طول الدورة</label>
+          <div class="input-icon">
+            <i class="bi bi-arrow-repeat"></i>
+            <input type="number" class="form-control" formControlName="cycleLength" />
+          </div>
+        </div>
+
+        <!-- REGULAR -->
+        <div class="col-md-6">
+          <label class="form-label-soft">انتظام الدورة</label>
+          <div class="d-flex gap-2 mt-1">
+            <span class="feel-chip"
+                  [ngClass]="{active: form.value.isRegular}"
+                  (click)="setRegular(true)">
+              منتظمة
+            </span>
+
+            <span class="feel-chip"
+                  [ngClass]="{active: !form.value.isRegular}"
+                  (click)="setRegular(false)">
+              غير منتظمة
+            </span>
+          </div>
+        </div>
+
+        <!-- STAGE -->
+        <div class="col-md-6">
+          <label class="form-label-soft">المرحلة الحالية</label>
+          <div class="input-icon">
+            <i class="bi bi-clipboard-pulse"></i>
+            <select class="form-select" formControlName="stage">
+              <option>الفحوصات الأوّلية</option>
+              <option>تحفيز المبايض</option>
+              <option>سحب البويضات</option>
+              <option>نقل الجنين</option>
+              <option>فترة الانتظار</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- MEDS -->
+        <div class="col-12" formArrayName="medications">
+          <label class="form-label-soft">متابعة الأدوية</label>
+
+          <div class="meds-list">
+
+            <div class="med-item"
+                 *ngFor="let med of meds.controls; let i = index"
+                 [formGroupName]="i">
+
+              <i class="bi bi-capsule-pill"></i>
+
+              <input type="text"
+                     class="form-control"
+                     formControlName="name"
+                     placeholder="Nom médicament" />
+
+              <input type="time"
+                     class="form-control"
+                     formControlName="time" />
+
+              <button type="button" (click)="removeMed(i)">
+                ❌
+              </button>
+
+            </div>
+
+          </div>
+
+          <button type="button"
+                  class="btn btn-ghost btn-sm mt-2"
+                  (click)="addMed()">
+            <i class="bi bi-plus-lg ms-1"></i> إضافة دواء
+          </button>
+        </div>
+
+        <!-- APPOINTMENT -->
+        <div class="col-md-6">
+          <label class="form-label-soft">موعد طبيب</label>
+          <div class="input-icon">
+            <i class="bi bi-calendar-check"></i>
+            <input type="datetime-local"
+                   class="form-control"
+                   formControlName="nextAppointment" />
+          </div>
+        </div>
+
+        <!-- HORMONES -->
+        <div class="col-md-6">
+          <label class="form-label-soft">نتائج الهرمونات</label>
+          <div class="input-icon">
+            <i class="bi bi-droplet-half"></i>
+            <input type="text"
+                   class="form-control"
+                   formControlName="hormones" />
+          </div>
+        </div>
+
+        <!-- ACTIONS -->
+        <div class="col-12 d-flex gap-2 justify-content-center mt-3">
+          <button type="button" class="btn btn-soft" (click)="submit()">
+            <i class="bi bi-bell-fill ms-1"></i> تفعيل التذكيرات
+          </button>
+
+          <button type="button" class="btn btn-ghost" (click)="submit()">
+            حفظ
+          </button>
+        </div>
+
+      </form>
+    </div>
+
+  </div>
+</section>

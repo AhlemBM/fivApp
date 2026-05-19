@@ -1,0 +1,56 @@
+<section id="education" class="screen">
+  <div class="container max-820">
+
+    <div class="text-center mb-4">
+      <span class="chip-label">
+        <i class="bi bi-book ms-1"></i> تعلّمي
+      </span>
+      <h2 class="screen-title">افهمي رحلتكِ</h2>
+      <p class="screen-sub">معلومات موثوقة بأسلوب بسيط وهادئ.</p>
+    </div>
+
+    <div class="accordion">
+
+      <div class="accordion-item" *ngFor="let item of items; let i = index">
+
+        <!-- HEADER -->
+        <h2 class="accordion-header">
+          <button class="accordion-button"
+                  [class.collapsed]="activeIndex !== i"
+                  (click)="toggle(i)">
+
+            <span class="edu-icon">
+              <i class="bi" [ngClass]="item.icon"></i>
+            </span>
+
+            {{ item.title }}
+          </button>
+        </h2>
+
+        <!-- BODY -->
+        <div class="accordion-collapse"
+             [class.show]="activeIndex === i"
+             [style.display]="activeIndex === i ? 'block' : 'none'">
+
+          <div class="accordion-body screen-sub">
+
+            <!-- TEXT -->
+            <ng-container *ngIf="item.content">
+              {{ item.content }}
+            </ng-container>
+
+            <!-- LIST -->
+            <ol *ngIf="item.list" class="lh-lg ps-3">
+              <li *ngFor="let step of item.list">
+                {{ step }}
+              </li>
+            </ol>
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</section>

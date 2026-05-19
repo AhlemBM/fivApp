@@ -1,0 +1,271 @@
+<app-navbar></app-navbar>
+<section id="profile" class="screen">
+  <div class="container max-820">
+
+    <!-- HEADER -->
+    <div class="text-center mb-4">
+
+      <span class="chip-label">
+        الخطوة 1 من 3
+      </span>
+
+      <h2 class="screen-title">
+        احكي لنا عنكِ
+      </h2>
+
+      <p class="screen-sub">
+        سنساعدكِ لفهم رحلتكِ أكثر ونقدّم لكِ دعمًا مناسبًا لكِ شخصيًا.
+      </p>
+
+      <div
+        class="progress-soft mt-3 mx-auto"
+        style="max-width:380px;"
+      >
+        <div style="width:33%"></div>
+      </div>
+
+    </div>
+
+    <!-- CARD -->
+    <div class="soft-card">
+
+      <form
+        [formGroup]="profileForm"
+        (ngSubmit)="submit()"
+        class="row g-3"
+      >
+
+        <!-- FIRST NAME -->
+        <div class="col-md-6">
+
+          <label class="form-label-soft">
+            الاسم
+          </label>
+
+          <div class="input-icon">
+
+            <i class="bi bi-person"></i>
+
+            <input
+              type="text"
+              class="form-control"
+              formControlName="firstName"
+              placeholder="اسمكِ"
+            />
+
+          </div>
+
+        </div>
+
+        <!-- LAST NAME -->
+        <div class="col-md-6">
+
+          <label class="form-label-soft">
+            اللقب
+          </label>
+
+          <div class="input-icon">
+
+            <i class="bi bi-person-badge"></i>
+
+            <input
+              type="text"
+              class="form-control"
+              formControlName="lastName"
+              placeholder="اللقب"
+            />
+
+          </div>
+
+        </div>
+
+        <!-- AGE -->
+        <div class="col-md-6">
+
+          <label class="form-label-soft">
+            العمر
+          </label>
+
+          <div class="input-icon">
+
+            <i class="bi bi-calendar-heart"></i>
+
+            <input
+              type="number"
+              class="form-control"
+              formControlName="age"
+              placeholder="مثلاً 32"
+            />
+
+          </div>
+
+        </div>
+
+        <!-- PREGNANCY DURATION -->
+        <div class="col-md-6">
+
+          <label class="form-label-soft">
+            منذ متى تحاولين الحمل؟
+          </label>
+
+          <div class="input-icon">
+
+            <i class="bi bi-hourglass-split"></i>
+
+            <select
+              class="form-select"
+              formControlName="pregnancyTryDuration"
+            >
+
+              <option value="">
+                اختاري
+              </option>
+
+              <option value="أقل من سنة">
+                أقل من سنة
+              </option>
+
+              <option value="من 1 إلى 3 سنوات">
+                من 1 إلى 3 سنوات
+              </option>
+
+              <option value="أكثر من 3 سنوات">
+                أكثر من 3 سنوات
+              </option>
+
+            </select>
+
+          </div>
+
+        </div>
+
+        <!-- FIRST IVF -->
+        <div class="col-md-6">
+
+          <label class="form-label-soft">
+            هل هذه أوّل تجربة طفل أنابيب؟
+          </label>
+
+          <div class="input-icon">
+
+            <i class="bi bi-question-circle"></i>
+
+            <select
+              class="form-select"
+              formControlName="isFirstIvf"
+            >
+
+              <option value="">
+                اختاري
+              </option>
+
+              <option value="yes">
+                نعم
+              </option>
+
+              <option value="no">
+                لا
+              </option>
+
+            </select>
+
+          </div>
+
+        </div>
+
+        <!-- PREVIOUS ATTEMPTS -->
+        <div class="col-md-6">
+
+          <label class="form-label-soft">
+            عدد المحاولات السابقة
+          </label>
+
+          <div class="input-icon">
+
+            <i class="bi bi-123"></i>
+
+            <input
+              type="number"
+              class="form-control"
+              formControlName="previousAttempts"
+              placeholder="0"
+            />
+
+          </div>
+
+        </div>
+
+        <!-- FOLLOW DOCTOR -->
+        <div class="col-12">
+
+          <label class="form-label-soft">
+            هل تتابعين مع طبيب؟
+          </label>
+
+          <div class="input-icon">
+
+            <i class="bi bi-heart-pulse"></i>
+
+            <select
+              class="form-select"
+              formControlName="followDoctor"
+            >
+
+              <option value="">
+                اختاري
+              </option>
+
+              <option value="yes">
+                نعم
+              </option>
+
+              <option value="no">
+                لا
+              </option>
+
+            </select>
+
+          </div>
+
+        </div>
+
+        <!-- BUTTON -->
+        <div
+          class="col-12 d-flex justify-content-between align-items-center mt-3"
+        >
+
+          <button
+            type="submit"
+            class="btn btn-soft"
+            [disabled]="loading"
+          >
+
+            {{
+            loading
+              ? 'جاري الحفظ...'
+              : 'حفظ'
+            }}
+
+          </button>
+
+        </div>
+
+      </form>
+
+      <!-- MESSAGE -->
+      <div
+        *ngIf="message"
+        class="alert alert-info mt-3"
+      >
+
+        {{ message }}
+
+      </div>
+
+    </div>
+
+  </div>
+</section>
+<app-checkin></app-checkin>
+<app-cycle></app-cycle>
+<app-footer></app-footer>

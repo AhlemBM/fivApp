@@ -1,0 +1,95 @@
+<section id="journey" class="screen">
+  <div class="container max-820">
+
+    <!-- HEADER -->
+    <div class="text-center mb-4">
+      <span class="chip-label">
+        <i class="bi bi-signpost-split ms-1"></i> رحلتكِ
+      </span>
+      <h2 class="screen-title">رحلتكِ… خطوة بخطوة</h2>
+      <p class="screen-sub">
+        تتبّعي مرحلتكِ الحالية، وتذكّري: كل خطوة تُقرّبكِ.
+      </p>
+    </div>
+
+    <!-- CURRENT STATUS -->
+    <div class="soft-card mb-4">
+      <div class="d-flex justify-content-between align-items-center flex-wrap gap-2">
+
+        <div>
+          <small class="text-muted">المرحلة الحالية</small>
+          <h5 class="mb-0 fw-bold" style="color:var(--lavender-700)">
+            {{ currentStage }}
+          </h5>
+        </div>
+
+        <div>
+          <small class="text-muted">حالتكِ العاطفية اليوم</small>
+          <div>
+            <span class="feel-chip active small">{{ mood }}</span>
+          </div>
+        </div>
+
+        <div class="text-md-end">
+          <small class="text-muted">رسالة لكِ</small>
+          <div class="fw-semibold" style="color:var(--pink-400)">
+            "{{ message }}"
+          </div>
+        </div>
+
+      </div>
+
+      <div class="progress-soft mt-3">
+        <div [style.width.%]="progress"></div>
+      </div>
+    </div>
+
+    <!-- TIMELINE -->
+    <div class="timeline">
+
+      <div
+        class="stage"
+        *ngFor="let stage of stages"
+        [ngClass]="{ 'current': stage.current }"
+      >
+
+        <span class="dot"></span>
+
+        <div class="stage-card">
+
+          <h6 class="fw-bold mb-1">
+            <span class="stage-num">{{ stage.id }}</span>
+            {{ stage.title }}
+
+            <span *ngIf="stage.current"
+                  class="badge ms-2"
+                  style="background:var(--pink-100);color:#b95075">
+              المرحلة الحالية
+            </span>
+          </h6>
+
+          <small *ngIf="stage.description"
+                 class="text-muted d-block mb-1">
+            طبيًا: {{ stage.description }}
+          </small>
+
+          <small *ngIf="stage.body"
+                 class="d-block"
+                 style="color:var(--ink-soft)">
+            الجسد: {{ stage.body }}
+          </small>
+
+          <small
+            class="d-block fw-semibold"
+            style="color:var(--lavender-700)">
+            الهدف: {{ stage.goal }}
+          </small>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+</section>

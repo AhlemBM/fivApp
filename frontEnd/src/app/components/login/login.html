@@ -1,0 +1,70 @@
+<section class="auth-screen">
+
+  <div class="auth-card">
+
+    <div class="text-center mb-4">
+      <h2 class="auth-title">تسجيل الدخول</h2>
+
+      <p class="auth-sub">
+        سعداء بعودتكِ 💜
+      </p>
+    </div>
+
+    <form (ngSubmit)="login()">
+
+      <div class="mb-3">
+
+        <label class="form-label">
+          البريد الإلكتروني
+        </label>
+
+        <input
+          type="email"
+          class="form-control"
+          [(ngModel)]="formData.email"
+          name="email"
+          placeholder="example@gmail.com"
+        />
+      </div>
+
+      <div class="mb-4">
+
+        <label class="form-label">
+          كلمة المرور
+        </label>
+
+        <input
+          type="password"
+          class="form-control"
+          [(ngModel)]="formData.mdp"
+          name="mdp"
+          placeholder="********"
+        />
+      </div>
+
+      <button
+        type="submit"
+        class="btn btn-soft w-100"
+        [disabled]="loading"
+      >
+        {{ loading ? 'Loading...' : 'دخول' }}
+      </button>
+
+    </form>
+
+    <div
+      *ngIf="message"
+      class="alert alert-info mt-3"
+    >
+      {{ message }}
+    </div>
+
+    <div class="text-center mt-3">
+      <a routerLink="/register">
+        إنشاء حساب جديد
+      </a>
+    </div>
+
+  </div>
+
+</section>

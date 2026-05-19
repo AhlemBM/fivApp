@@ -1,0 +1,75 @@
+<nav class="top-nav">
+
+  <div class="container py-3 d-flex align-items-center justify-content-between">
+
+    <div class="brand">
+      <span class="brand-mark"><i class="bi bi-flower2"></i></span>
+      <span>رفيقتكِ</span>
+    </div>
+
+    <div class="nav-pill d-none d-md-flex gap-1">
+      <a href="#welcome">الترحيب</a>
+      <a href="#education">تعلّمي</a>
+      <a href="#journey">رحلتكِ</a>
+    </div>
+
+    <!-- RIGHT ACTIONS -->
+    <div class="d-flex align-items-center gap-2">
+      <!-- NOTIFICATIONS -->
+      <button
+        class="icon-btn notif-btn"
+        routerLink="/notifications">
+
+        <i class="bi bi-bell"></i>
+
+        <span class="notif-badge"
+              *ngIf="unreadCount > 0">
+
+          {{ unreadCount }}
+
+        </span>
+
+      </button>
+
+      <!-- PROFILE ICON (only if logged in) -->
+      <div class="profile-menu-wrapper" *ngIf="isLoggedIn">
+
+        <!-- PROFILE BUTTON -->
+        <button
+          class="icon-btn"
+          (click)="toggleMenu()">
+
+          <i class="bi bi-person-circle"></i>
+        </button>
+
+        <!-- DROPDOWN -->
+        <div
+          class="profile-dropdown"
+          *ngIf="menuOpen">
+
+          <a routerLink="/profile" (click)="closeMenu()">
+            <i class="bi bi-person"></i>
+            حسابي
+          </a>
+
+          <button (click)="logout()">
+            <i class="bi bi-box-arrow-right"></i>
+            تسجيل الخروج
+          </button>
+
+        </div>
+
+      </div>
+      <!-- LOGIN / REGISTER -->
+      <button
+        *ngIf="!isLoggedIn"
+        class="btn btn-soft"
+        routerLink="/register">
+        ابدئي رحلتك
+      </button>
+
+    </div>
+
+
+  </div>
+</nav>
