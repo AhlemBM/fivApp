@@ -7,10 +7,16 @@ const MedicationNotificationService = require('../services/medicationService');
 
 module.exports = (notificationService) => {
     console.log('🔧 notificationJob CALLED');
+  const { Journal } = require('../models');
 
+// clean cache / notifications / etc
+  cron.schedule('0 0 * * *', async () => {
+
+   // console.log('New journal day started');
+  });
     // 🌸 Cycle — chaque jour à 08:00
     cron.schedule('0 8 * * *', async () => {
-        console.log('🌸 Cycle cron running');
+     //   console.log('🌸 Cycle cron running');
         await CycleNotificationService.sendDailyCycleMessages(notificationService);
     });
 
@@ -28,14 +34,14 @@ module.exports = (notificationService) => {
     // 🧪 TEST IMMÉDIAT AU DÉMARRAGE
     // ==============================
     CycleNotificationService.sendDailyCycleMessages(notificationService)
-        .then(() => console.log('✅ sendDailyCycleMessages done'))
+        .then()
         .catch((err) => console.error('❌', err.message));
 
     AppointmentNotificationService.checkAppointments(notificationService)
-        .then(() => console.log('✅ checkAppointments done'))
+        .then()
         .catch((err) => console.error('❌', err.message));
 
     MedicationNotificationService.checkMedications(notificationService)
-        .then(() => console.log('✅ checkMedications done'))
+        .then()
         .catch((err) => console.error('❌', err.message));
 };

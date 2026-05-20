@@ -8,7 +8,8 @@
       </span>
       <h2 class="screen-title">رحلتكِ… خطوة بخطوة</h2>
       <p class="screen-sub">
-        تتبّعي مرحلتكِ الحالية، وتذكّري: كل خطوة تُقرّبكِ.
+        قد تكون هذه الرحلة طويلة أحيانًا، لكنها ليست بلا معنى.<br>
+        كل يوم تستمرين فيه، أنتِ تقتربين خطوة من حلمكِ.
       </p>
     </div>
 
@@ -16,19 +17,8 @@
     <div class="soft-card mb-4">
       <div class="d-flex justify-content-between align-items-center flex-wrap gap-2">
 
-        <div>
-          <small class="text-muted">المرحلة الحالية</small>
-          <h5 class="mb-0 fw-bold" style="color:var(--lavender-700)">
-            {{ currentStage }}
-          </h5>
-        </div>
 
-        <div>
-          <small class="text-muted">حالتكِ العاطفية اليوم</small>
-          <div>
-            <span class="feel-chip active small">{{ mood }}</span>
-          </div>
-        </div>
+
 
         <div class="text-md-end">
           <small class="text-muted">رسالة لكِ</small>
@@ -50,45 +40,87 @@
       <div
         class="stage"
         *ngFor="let stage of stages"
-        [ngClass]="{ 'current': stage.current }"
-      >
+        [ngClass]="{ 'current': stage.current }">
 
-        <span class="dot"></span>
+        <span class="dot">{{ stage.icon }}</span>
 
         <div class="stage-card">
 
-          <h6 class="fw-bold mb-1">
+          <!-- TITRE -->
+          <h6 class="fw-bold mb-2">
             <span class="stage-num">{{ stage.id }}</span>
             {{ stage.title }}
-
             <span *ngIf="stage.current"
                   class="badge ms-2"
                   style="background:var(--pink-100);color:#b95075">
-              المرحلة الحالية
+              أنتِ هنا
             </span>
           </h6>
 
-          <small *ngIf="stage.description"
-                 class="text-muted d-block mb-1">
-            طبيًا: {{ stage.description }}
-          </small>
+          <!-- ماذا يحدث طبيًا -->
+          <div *ngIf="stage.medical?.length" class="stage-block">
+            <small class="block-label">ماذا يحدث؟</small>
+            <ul class="stage-list">
+              <li *ngFor="let item of stage.medical">{{ item }}</li>
+            </ul>
+          </div>
 
-          <small *ngIf="stage.body"
-                 class="d-block"
-                 style="color:var(--ink-soft)">
-            الجسد: {{ stage.body }}
-          </small>
+          <!-- داخل الجسم -->
+          <div *ngIf="stage.body?.length" class="stage-block">
+            <small class="block-label">داخل الجسم</small>
+            <ul class="stage-list">
+              <li *ngFor="let item of stage.body">{{ item }}</li>
+            </ul>
+          </div>
 
-          <small
-            class="d-block fw-semibold"
-            style="color:var(--lavender-700)">
-            الهدف: {{ stage.goal }}
-          </small>
+          <!-- أعراض محتملة -->
+          <div *ngIf="stage.symptoms?.length" class="stage-block">
+            <small class="block-label">أعراض محتملة</small>
+            <ul class="stage-list">
+              <li *ngFor="let s of stage.symptoms">{{ s }}</li>
+            </ul>
+          </div>
+
+          <!-- نقاط مفصّلة (IVF / ICSI) -->
+          <div *ngIf="stage.points?.length" class="stage-block">
+            <div *ngFor="let point of stage.points" class="mb-2">
+              <small class="block-label">{{ point.label }}</small>
+              <ul class="stage-list">
+                <li *ngFor="let item of point.items">{{ item }}</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- مهم -->
+          <div *ngIf="stage.important?.length" class="stage-block stage-block--important">
+            <small class="block-label">⚠️ مهم</small>
+            <ul class="stage-list">
+              <li *ngFor="let item of stage.important">{{ item }}</li>
+            </ul>
+          </div>
+
+          <!-- الهدف -->
+          <div class="stage-block stage-block--goal">
+            <small class="block-label fw-semibold" style="color:var(--lavender-700)">الهدف</small>
+            <ul class="stage-list">
+              <li *ngFor="let g of stage.goal">{{ g }}</li>
+            </ul>
+          </div>
 
         </div>
-
       </div>
 
+    </div>
+
+    <!-- SUCCESS FACTORS -->
+    <div class="soft-card mt-4">
+      <p class="screen-sub mb-2">
+        طفل الأنابيب ليس خطوة واحدة… بل سلسلة مراحل دقيقة تعمل معًا مثل منظومة كاملة.<br>
+        النجاح يعتمد على:
+      </p>
+      <ul class="stage-list">
+        <li *ngFor="let f of successFactors">✔️ {{ f }}</li>
+      </ul>
     </div>
 
   </div>

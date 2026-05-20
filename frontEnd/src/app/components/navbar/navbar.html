@@ -11,14 +11,18 @@
       <a href="#welcome">الترحيب</a>
       <a href="#education">تعلّمي</a>
       <a href="#journey">رحلتكِ</a>
+      <a  *ngIf="isLoggedIn" routerLink="/comment">المجتمع</a>
+      <a  *ngIf="isLoggedIn" routerLink="/journal">يومياتي </a>
+      <a  routerLink="/support">المساعدة </a>
     </div>
 
+
     <!-- RIGHT ACTIONS -->
-    <div class="d-flex align-items-center gap-2">
+    <div class="d-flex align-items-center gap-2"  >
       <!-- NOTIFICATIONS -->
       <button
         class="icon-btn notif-btn"
-        routerLink="/notifications">
+        routerLink="/notifications" *ngIf="isLoggedIn">
 
         <i class="bi bi-bell"></i>
 

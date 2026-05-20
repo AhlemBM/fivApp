@@ -9,7 +9,7 @@ module.exports.checkMedications = async (notificationService) => {
             include: [{ model: Cycle, as: 'cycle', attributes: ['id', 'userId'] }]
         });
 
-        console.log(`💊 Medications found: ${meds.length}`);
+    //    console.log(`💊 Medications found: ${meds.length}`);
         if (meds.length === 0) return;
 
         for (const med of meds) {
@@ -28,7 +28,7 @@ module.exports.checkMedications = async (notificationService) => {
 
                 const diffMinutes = Math.abs(now - medTime) / 60000;
 
-                console.log(`💊 Med ${med.id} | time: ${med.time} | diff: ${diffMinutes.toFixed(2)} min | userId: ${userId}`);
+             //   console.log(`💊 Med ${med.id} | time: ${med.time} | diff: ${diffMinutes.toFixed(2)} min | userId: ${userId}`);
 
                 // ✅ Vérifier doublon
                 const alreadySent = await Notification.findOne({
@@ -41,7 +41,7 @@ module.exports.checkMedications = async (notificationService) => {
                 });
 
                 if (alreadySent) {
-                    console.log(`⏭️ Notif medication déjà envoyée pour med ${med.id}`);
+                 //   console.log(`⏭️ Notif medication déjà envoyée pour med ${med.id}`);
                     continue;
                 }
 

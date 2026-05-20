@@ -28,6 +28,7 @@ export class CycleService {
     return this.http.get(`${this.cycleUrl}/getAll`);
   }
 
+
   getCycleById(id: number): Observable<any> {
     return this.http.get(`${this.cycleUrl}/${id}`);
   }

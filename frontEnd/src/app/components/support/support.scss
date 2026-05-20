@@ -1,0 +1,54 @@
+.support-page {
+  max-width: 900px;
+  margin: auto;
+  padding: 20px;
+  direction: rtl;
+  font-family: Arial;
+}
+
+.title {
+  text-align: center;
+  color: #6c4ddc;
+  margin-bottom: 10px;
+}
+
+.intro {
+  text-align: center;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+.card {
+  background: #f8f5ff;
+  padding: 20px;
+  border-radius: 12px;
+  margin-bottom: 20px;
+}
+
+.card h2 {
+  color: #4b2aad;
+  margin-bottom: 10px;
+}
+
+ul {
+  padding-right: 20px;
+}
+
+li {
+  margin-bottom: 8px;
+  line-height: 1.6;
+}
+
+.action {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.btn {
+  background: #6c4ddc;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 10px;
+  cursor: pointer;
+}

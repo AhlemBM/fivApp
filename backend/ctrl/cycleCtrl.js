@@ -138,3 +138,13 @@ exports.deleteCycle = async (req, res) => {
         });
     }
 };
+exports.getMyCycle = async (req, res) => {
+
+  const userId = req.user.id;
+
+  const cycle = await Cycle.findOne({
+    where: { userId }
+  });
+
+  res.json(cycle);
+};

@@ -14,6 +14,7 @@ import {Navbar} from '../navbar/navbar';
 import {Footer} from '../footer/footer';
 import {Checkin} from '../checkin/checkin';
 import {Cycle} from '../cycle/cycle';
+import {Appointment} from '../appointment/appointment';
 
 @Component({
   selector: 'app-profile',
@@ -25,6 +26,7 @@ import {Cycle} from '../cycle/cycle';
     Checkin,
     Cycle,
     Footer,
+    Appointment
   ],
   templateUrl: './profile.html',
   styleUrl: './profile.scss'

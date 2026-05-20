@@ -1,0 +1,117 @@
+<app-navbar></app-navbar>
+
+<div class="journal-container">
+
+  <!-- HEADER -->
+  <div class="journal-header">
+
+    <h1>اكتبي ما لا يُقَال .. نحن هنا لنحتويك</h1>
+
+    <p>
+      أحيانًا لا نحتاج حُلولًا.. فقط مكانًا نضع فيه ما نشعر به.
+    </p>
+
+  </div>
+
+  <!-- SECTION 1 -->
+  <div class="journal-box">
+
+    <h2>🧠 مشاعر اليوم</h2>
+
+    <label>ما أكثر فكرة تشغل بالك اليوم؟</label>
+    <textarea [(ngModel)]="form.thought"></textarea>
+
+    <label>ما الشيء الذي أتعبك نفسيًا اليوم؟</label>
+    <textarea [(ngModel)]="form.stress"></textarea>
+
+    <label>هل هناك شيء صغير جعلك تشعرين بالراحة؟</label>
+    <textarea [(ngModel)]="form.comfort"></textarea>
+
+  </div>
+
+  <!-- SECTION 2 -->
+  <div class="journal-box">
+
+    <h2>💛 تقبل الذات</h2>
+
+    <label>ماذا تحتاجين من نفسك اليوم؟</label>
+    <textarea [(ngModel)]="form.selfNeed"></textarea>
+
+    <label>ماذا ستقولين لصديقتك؟</label>
+    <textarea [(ngModel)]="form.selfAdvice"></textarea>
+
+  </div>
+
+  <!-- SECTION 3 -->
+  <div class="journal-box">
+
+    <h2>😔 القلق والانتظار</h2>
+
+    <label>ما أكثر شيء يقلقك الآن؟</label>
+    <textarea [(ngModel)]="form.anxiety"></textarea>
+
+    <label>ما الذي يمكنك التحكم فيه اليوم؟</label>
+    <textarea [(ngModel)]="form.control"></textarea>
+
+  </div>
+
+  <!-- SECTION 4 -->
+  <div class="journal-box">
+
+    <h2>🌸 الأمل والتوازن</h2>
+
+    <label>متى شعرت بالقوة؟</label>
+    <textarea [(ngModel)]="form.strength"></textarea>
+
+    <label>ما الذي ساعدك؟</label>
+    <textarea [(ngModel)]="form.support"></textarea>
+
+  </div>
+
+  <!-- SECTION 5 -->
+  <div class="journal-box">
+
+    <h2>✨ مساحة حرة</h2>
+
+    <textarea
+      class="big"
+      [(ngModel)]="form.freeText"
+      placeholder="اكتبي كما تشائين...">
+    </textarea>
+
+  </div>
+
+  <!-- SAVE -->
+  <div class="actions">
+
+    <button (click)="save()" [disabled]="loading">
+      {{ loading ? 'جاري الحفظ...' : 'حفظ' }}
+    </button>
+
+    <p class="success">{{ message }}</p>
+
+  </div>
+
+</div>
+<!-- SUPPORT MODAL -->
+<div class="popup-overlay"
+     *ngIf="showSupportPopup">
+
+  <div class="popup-box">
+
+    <div class="popup-title">
+      رسالة دعم 🤍
+    </div>
+
+    <div class="popup-message">
+      {{ supportMessage }}
+    </div>
+
+    <button (click)="showSupportPopup = false">
+      إغلاق
+    </button>
+
+  </div>
+
+</div>
+<app-footer></app-footer>

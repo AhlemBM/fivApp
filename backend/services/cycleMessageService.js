@@ -4,7 +4,7 @@ const { Op } = require('sequelize');
 module.exports.sendDailyCycleMessages = async (notificationService) => {
     try {
         const cycles = await Cycle.findAll();
-        console.log(`🌸 Cycles found: ${cycles.length}`);
+      //  console.log(`🌸 Cycles found: ${cycles.length}`);
 
         const today = new Date().toISOString().split('T')[0]; // '2026-05-19'
 
@@ -29,7 +29,7 @@ module.exports.sendDailyCycleMessages = async (notificationService) => {
                 });
 
                 if (alreadySent) {
-                    console.log(`⏭️ Notif cycle déjà envoyée aujourd'hui pour user ${cycle.userId}`);
+                  //  console.log(`⏭️ Notif cycle déjà envoyée aujourd'hui pour user ${cycle.userId}`);
                     continue;
                 }
 

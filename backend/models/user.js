@@ -13,7 +13,17 @@ module.exports = (sequelize, DataTypes) => {
         as: 'cycles',
         onDelete: 'CASCADE'
       });
+      User.hasMany(models.Comment, {
+        foreignKey: 'userId',
+        as: 'comments',
+        onDelete: 'CASCADE'
+      });
+      User.hasMany(models.Journal, {
+        foreignKey: 'userId',
+        as: 'journals'
+      });
     }
+
 
   }
 

@@ -18,18 +18,15 @@
           <button class="accordion-button"
                   [class.collapsed]="activeIndex !== i"
                   (click)="toggle(i)">
-
             <span class="edu-icon">
               <i class="bi" [ngClass]="item.icon"></i>
             </span>
-
             {{ item.title }}
           </button>
         </h2>
 
         <!-- BODY -->
         <div class="accordion-collapse"
-             [class.show]="activeIndex === i"
              [style.display]="activeIndex === i ? 'block' : 'none'">
 
           <div class="accordion-body screen-sub">
@@ -39,12 +36,20 @@
               {{ item.content }}
             </ng-container>
 
-            <!-- LIST -->
+            <!-- SIMPLE LIST -->
             <ol *ngIf="item.list" class="lh-lg ps-3">
-              <li *ngFor="let step of item.list">
-                {{ step }}
-              </li>
+              <li *ngFor="let step of item.list">{{ step }}</li>
             </ol>
+
+            <!-- SECTIONS (أسباب عند المرأة / الرجل) -->
+            <ng-container *ngIf="item.sections">
+              <div *ngFor="let section of item.sections" class="mb-3">
+                <strong>{{ section.subtitle }}</strong>
+                <ul class="lh-lg ps-3 mt-1">
+                  <li *ngFor="let point of section.points">{{ point }}</li>
+                </ul>
+              </div>
+            </ng-container>
 
           </div>
         </div>

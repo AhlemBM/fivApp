@@ -11,7 +11,8 @@ const medicationCtrl = require('../ctrl/medcationnCtrl');
 const appointmentCtrl = require('../ctrl/appointmentCtrl');
 const moodCtrl = require('../ctrl/moodchckinCtrl');
 const emotionalCtrl = require('../ctrl/emotionalContentCtrl');
-const Notifctrl = require('../ctrl/notificationController')
+const commentCtrl = require('../ctrl/commentCtrl');
+const journalCtrl = require('../ctrl/journalCtlr');
 // ========================
 // AUTH ROUTES
 // ========================
@@ -33,6 +34,7 @@ router.get('/profile', authMiddleware, profilCtrl.getProfile);
 router.put('/profile', authMiddleware, profilCtrl.updateProfile);
 
 //cycle
+router.get('/cycles/current', authMiddleware, cycleCtrl.getMyCycle);
 router.post('/cycle/add', authMiddleware, cycleCtrl.createCycle);
 //router.get('/cycle/get', authMiddleware, cycleCtrl.getMyCycles);
 router.get('/cycles/:id', authMiddleware, cycleCtrl.getCycleById);
@@ -51,10 +53,10 @@ router.delete('/medication/delete/:id', medicationCtrl.deleteMedication);
 
 
 
-router.post('/', appointmentCtrl.createAppointment);
-router.get('/', appointmentCtrl.getAllAppointments);
-router.put('/:id', appointmentCtrl.updateAppointment);
-router.delete('/:id', appointmentCtrl.deleteAppointment);
+router.post('/appointment', appointmentCtrl.createAppointment);
+router.get('/appointment', appointmentCtrl.getAllAppointments);
+router.put('/appointment/:id', appointmentCtrl.updateAppointment);
+router.delete('/appointment/:id', appointmentCtrl.deleteAppointment);
 
 
 
@@ -94,6 +96,34 @@ router.get('/notifications', authMiddleware, async (req, res) => {
         res.status(500).json({ message: err.message });
     }
 });
+
+
+
+
+router.post('/comments', authMiddleware, commentCtrl.createComment);
+
+router.get('/comments', authMiddleware, commentCtrl.getComments);
+
+router.delete('/comments/:id', authMiddleware, commentCtrl.deleteComment);
+
+
+
+
+
+router.post('/journal', authMiddleware, journalCtrl.saveJournal);
+
+router.get('/journal/today', authMiddleware, journalCtrl.getTodayJournal);
+
+router.get('/journal/history', authMiddleware, journalCtrl.getJournalHistory);
+
+
+
+
+
+
+
+
+
 module.exports = router;
 
 

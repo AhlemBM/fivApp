@@ -1,0 +1,50 @@
+<app-navbar></app-navbar>
+
+<div class="community-page">
+
+  <!-- HEADER -->
+  <div class="community-header">
+    <h1 class="title">مجتمع الرحلة ، أصوات تشبهك</h1>
+    <p class="description">
+      هنا ستجدين قصصًا وتجارب حقيقية لنساء يمررن بنفس رحلة طفل الأنبوب.
+      هذا المكان ليس للنقاش أو التعليقات، بل هو مساحة آمنة للقراءة والمشاركة والفهم، والشعور بأنكِ لستِ وحدكِ.
+    </p>
+    <div class="quote">
+      "كل قصة هنا كُتبت لتقول لكِ شيئًا واحدًا:<br>
+      ما تمرّين به ليس غريبًا… وهناك من يشعر به مثلك"
+    </div>
+  </div>
+
+  <!-- COMMENTS -->
+  <div class="comment-section">
+    <h2>المشاركات</h2>
+
+    <!-- INPUT -->
+    <div class="comment-input">
+      <textarea
+        [(ngModel)]="content"
+        name="content"
+        placeholder="اكتبي تجربتكِ أو شعوركِ..."
+        rows="4">
+      </textarea>
+      <button type="button" (click)="addComment()">مشاركة</button>
+      <!-- ← SUPPRIMÉ : le bouton حذف orphelin qui causait l'erreur -->
+    </div>
+
+    <!-- LIST -->
+    <div class="comment-list">
+      <div class="comment-card" *ngFor="let c of comments">
+        <div class="comment-text">{{ c.content }}</div>
+        <div class="comment-meta">
+          <span>{{ c.user?.firstName || 'Anonymous' }}</span>
+          <span>{{ c.createdAt | date:'short' }}</span>
+        </div>
+        <!-- ✓ Ce bouton est bien dans le *ngFor, c est défini ici -->
+        <button type="button" class="delete-btn" (click)="deleteComment(c.id)">حذف</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<app-footer></app-footer>

@@ -1,0 +1,105 @@
+<section id="appointment" class="screen">
+  <div class="container max-820">
+
+    <!-- HEADER -->
+    <div class="text-center mb-4">
+      <span class="chip-label">
+        <i class="bi bi-calendar-check ms-1"></i> الموعد الطبي
+      </span>
+
+      <h2 class="screen-title">
+        مواعيدكِ الطبية، خطوة بخطوة
+      </h2>
+
+      <p class="screen-sub">
+        تابعي مواعيد الطبيب بكل سهولة وبدون نسيان.
+      </p>
+    </div>
+
+    <!-- CARD -->
+    <div class="soft-card">
+
+      <form [formGroup]="appointmentForm" class="row g-3">
+
+        <!-- DATE TIME -->
+        <div class="col-md-6">
+          <label class="form-label-soft">تاريخ ووقت الموعد</label>
+
+          <div class="input-icon">
+            <i class="bi bi-calendar-event"></i>
+
+            <input type="datetime-local"
+                   class="form-control"
+                   formControlName="nextAppointment" />
+          </div>
+        </div>
+
+        <!-- DOCTOR NAME -->
+        <div class="col-md-6">
+          <label class="form-label-soft">اسم الطبيب</label>
+
+          <div class="input-icon">
+            <i class="bi bi-person-badge"></i>
+
+            <input type="text"
+                   class="form-control"
+                   formControlName="doctorName"
+                   placeholder="Dr ..." />
+          </div>
+        </div>
+
+        <!-- NOTES -->
+        <div class="col-12">
+          <label class="form-label-soft">ملاحظات</label>
+
+          <div class="input-icon">
+            <i class="bi bi-chat-left-text"></i>
+
+            <textarea class="form-control"
+                      rows="3"
+                      formControlName="notes"
+                      placeholder="أية ملاحظات حول الموعد...">
+            </textarea>
+          </div>
+        </div>
+
+        <!-- ACTIONS -->
+        <div class="col-12 d-flex gap-2 justify-content-center mt-3">
+
+          <button type="button"
+                  class="btn btn-ghost"
+                  (click)="resetForm()">
+
+            إلغاء
+          </button>
+
+          <button type="button"
+                  class="btn btn-soft"
+                  (click)="saveAppointment()"
+                  [disabled]="loading">
+
+            {{ loading ? 'جاري الحفظ...' : 'حفظ الموعد' }}
+
+          </button>
+
+        </div>
+
+        <!-- MESSAGE -->
+        <div class="col-12 text-center mt-2">
+
+          <div class="text-success" *ngIf="message">
+            {{ message }}
+          </div>
+
+          <div class="text-danger" *ngIf="error">
+            {{ error }}
+          </div>
+
+        </div>
+
+      </form>
+
+    </div>
+
+  </div>
+</section>

@@ -22,7 +22,7 @@ class NotificationService {
             });
 
             this.io.to(`user_${data.userId}`).emit('notification', notif);
-            console.log(`✅ Notif créée et envoyée → user ${data.userId} | ${data.type}`);
+          //  console.log(`✅ Notif créée et envoyée → user ${data.userId} | ${data.type}`);
             return notif;
 
         } catch (err) {

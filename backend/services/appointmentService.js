@@ -9,21 +9,21 @@ module.exports.checkAppointments = async (notificationService) => {
             include: [{ model: Cycle, as: 'cycle', attributes: ['id', 'userId'] }]
         });
 
-        console.log(`📅 Appointments found: ${appointments.length}`);
+       // console.log(`📅 Appointments found: ${appointments.length}`);
         if (appointments.length === 0) return;
 
         for (const app of appointments) {
             try {
                 const userId = app.cycle?.userId;
                 if (!userId) {
-                    console.warn(`⚠️ Pas de userId pour appointment ${app.id}`);
+                 //   console.warn(`⚠️ Pas de userId pour appointment ${app.id}`);
                     continue;
                 }
 
                 const appDate = new Date(app.appointmentDate);
                 const diffMinutes = (appDate - now) / 60000;
 
-                console.log(`📅 App ${app.id} | diff: ${diffMinutes.toFixed(2)} min | userId: ${userId}`);
+               // console.log(`📅 App ${app.id} | diff: ${diffMinutes.toFixed(2)} min | userId: ${userId}`);
 
                 // ✅ Vérifier doublon
                 const alreadySent = await Notification.findOne({
@@ -36,7 +36,7 @@ module.exports.checkAppointments = async (notificationService) => {
                 });
 
                 if (alreadySent) {
-                    console.log(`⏭️ Notif appointment déjà envoyée pour app ${app.id}`);
+                  //  console.log(`⏭️ Notif appointment déjà envoyée pour app ${app.id}`);
                     continue;
                 }
 
@@ -50,7 +50,7 @@ module.exports.checkAppointments = async (notificationService) => {
                         referenceId: app.id,
                         referenceType: 'Appointment'
                     });
-                    console.log(`✅ Appointment notif sent for user ${userId}`);
+                  //  console.log(`✅ Appointment notif sent for user ${userId}`);
                 }
 
             } catch (err) {

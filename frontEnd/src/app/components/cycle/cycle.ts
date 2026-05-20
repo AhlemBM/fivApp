@@ -12,13 +12,15 @@ import {
 import { CommonModule } from '@angular/common';
 import { CycleService } from '../../services/cycle-service';
 import {AuthService} from '../../services/auth-service';
+import {Appointment} from '../appointment/appointment';
 
 @Component({
   selector: 'app-cycle',
   standalone: true,
   imports: [
     CommonModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    Appointment
   ],
   templateUrl: './cycle.html',
   styleUrls: ['./cycle.scss']
